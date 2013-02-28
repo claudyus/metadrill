@@ -21,13 +21,13 @@
 #define Z_VALUE_MID (cnc_z-3)
 #define Z_VALUE_DOWN (cnc_z-7)
 
-#define FEEDRATE_HIGH 950
-#define FEEDRATE_LOW 100
+#define FEEDRATE_HIGH 400
+#define FEEDRATE_LOW 90
 
 #ifdef WIN32
 #  define TTS_FOR_GCODE "COM3"
 #else
-#  define TTS_FOR_GCODE "/dev/tts/USB0"
+#  define TTS_FOR_GCODE "/dev/ttyUSB0"
 #endif
 
 #define CONSIZE 45
@@ -667,7 +667,7 @@ retry_read_file:
 		DCB dcb;
 		FillMemory(&dcb, sizeof(dcb), 0);
 		dcb.DCBlength = sizeof(dcb);
-		CHECK(BuildCommDCB("115200,n,8,1", &dcb), != 0);
+		CHECK(BuildCommDCB("38400,n,8,1", &dcb), != 0);
 		CHECK(SetCommState(hComm, &dcb), != 0);
 
 		COMMTIMEOUTS ct;
@@ -684,7 +684,7 @@ retry_read_file:
 
 			int comfd = fileno(tts);
 			struct termios newtio = { };
-			newtio.c_cflag = B115200 | CS8 | CREAD;
+			newtio.c_cflag = B38400 | CS8 | CREAD;
 			newtio.c_iflag = IGNPAR;
 			newtio.c_oflag = 0;
 			newtio.c_lflag = 0;
