@@ -1,3 +1,4 @@
+// install libsdl1.2-dev libsdl-ttf2.0-dev
 // gcc -o metadrill -ggdb -Wall -O0 metadrill.c -lm -lSDL -lSDL_ttf
 
 #include <stdio.h>
