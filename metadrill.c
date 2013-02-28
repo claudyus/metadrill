@@ -1057,6 +1057,12 @@ int main(int argc, char **argv)
 				move_cnc_head_gcode(Z_STATE_MID, 1, 0);
 			}
 			if (event.type == SDL_KEYDOWN &&
+					event.key.keysym.sym == SDLK_e)
+			{
+				//enable drill possibility
+				drilling_ok = 1;
+			}
+			if (event.type == SDL_KEYDOWN &&
 					event.key.keysym.sym == SDLK_u)
 			{
 				move_cnc_head_gcode(Z_STATE_UP, 1, 0);

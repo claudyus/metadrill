@@ -99,6 +99,8 @@ Command Reference:
 	z	Set current CNC position the home-position
 	m	Move CNC head to selected position
 
+	e 	Enable drilling (like args -x)
+
 	u	Move CNC head to up-position
 	d	Move CNC head to down-position (very close to PCB)
 	x	Drill (move CNC head slowly into PCB and up again)
