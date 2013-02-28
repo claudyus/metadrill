@@ -105,7 +105,7 @@ Command Reference:
 	d	Move CNC head to down-position (very close to PCB)
 	x	Drill (move CNC head slowly into PCB and up again)
 
-	c	Clear console output in gui window (with -c on command line)
+	c	Enable/Clear console output in gui window (like -c on command line)
 
 	s	Start/continue drilling program (press any key to interrupt)
 

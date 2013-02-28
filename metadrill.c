@@ -1077,11 +1077,15 @@ int main(int argc, char **argv)
 			if (event.type == SDL_KEYDOWN &&
 					event.key.keysym.sym == SDLK_c)
 			{
-				int i;
-				for (i=0; i<CONSIZE; i++)
-					conbuffer[i][0] = 0;
-				screen_needs_update = 1;
-				draw_screen();
+				if (!console_gui) {
+					console_gui = 1;
+				} else {
+					int i;
+					for (i=0; i<CONSIZE; i++)
+						conbuffer[i][0] = 0;
+					screen_needs_update = 1;
+					draw_screen();
+				}
 			}
 			if (event.type == SDL_KEYDOWN &&
 					event.key.keysym.sym == SDLK_s)
