@@ -723,7 +723,7 @@ retry_read_file:
 	}
 
 	if (z_state == Z_STATE_SETHOME) {
-		snprintf(buffer, 512, "G92");
+		snprintf(buffer, 512, "G92 X%f Y%f Z%d", current_x, current_y, current_z);
 		execute_gcode();
 		cnc_x = cnc_y = cnc_z = 0;
 		current_z = 0;
