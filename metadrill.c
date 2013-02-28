@@ -204,7 +204,7 @@ void read_drlfile(FILE *f)
 		printf("%s\n", buf);
 		char s1[512], s2[512];
 		float v1, v2;
-		if (sscanf(buf, "T%*dC%f", &v1) == 1) {
+		if (sscanf(buf, "T%*dC%f", &v1) >= 1) {
 			current_list = NULL;
 			current_count = NULL;
 			if (v1 >= 0.004 && v1 <= 0.006) {
