@@ -197,7 +197,10 @@ void read_drlfile(FILE *f)
 	int firstdrill = 1;
 	struct pos **current_list = NULL;
 	int *current_count = NULL;
-	while (fgets(buf, 512, f) == buf) {
+
+	fgets(buf, 512, f);
+	while (buf != NULL || buf != EOF) {
+		printf("%s\n", buf);
 		char s1[512], s2[512];
 		float v1, v2;
 		if (sscanf(buf, "T%*dC%f", &v1) == 1) {
@@ -215,10 +218,11 @@ void read_drlfile(FILE *f)
 				current_list = &drill_list;
 				current_count = &drill_count;
 			}
-		}
-		if (current_list && sscanf(buf, "X%[-0-9]Y%[-0-9]", s1, s2) == 2) {
+		} //end if  */
+		if (sscanf(buf, "X%[-0-9]Y%[-0-9]", s1, s2) == 2) {
 			sscanf(s1, "%f", &v1);
 			sscanf(s2, "%f", &v2);
+			printf("%f %f\n", v1, v2);
 			v1 *= pow(10, 10-strlen(s1)) * (s1[0] == '-' ? 10 : 1);
 			v2 *= pow(10, 10-strlen(s2)) * (s2[0] == '-' ? 10 : 1);
 			if (firstdrill) {
@@ -241,8 +245,11 @@ void read_drlfile(FILE *f)
 			p->next = *current_list;
 			*current_list = p;
 			(*current_count)++;
-		}
-	}
+		} //end if */
+		int err = fgets(buf, 512, f);
+		if (!err)
+			break; 
+	} //end while
 	sort_drill_list_by_morton_num();
 	console("Drillfile statistics:\n");
 	console("     %5d mark positions\n", mark_count);
