@@ -205,20 +205,21 @@ void read_drlfile(FILE *f)
 		char s1[512], s2[512];
 		float v1, v2;
 		if (sscanf(buf, "T%*dC%f", &v1) >= 1) {
+/*		FIXME use all the T value as drill
 			current_list = NULL;
 			current_count = NULL;
 			if (v1 >= 0.004 && v1 <= 0.006) {
 				current_list = &mark_list;
 				current_count = &mark_count;
 			}
-			if (v1 >= 0.009 && v1 <= 0.011) {
+			if (v1 >= 0.009 && v1 <= 2) {
 				current_list = &mount_list;
 				current_count = &mount_count;
 			}
-			if (v1 >= 0.034 && v1 <= 0.036) {
+			if (v1 >= 2.001 && v1 <= 10) {*/
 				current_list = &drill_list;
 				current_count = &drill_count;
-			}
+			//}
 		} //end if  */
 		if (sscanf(buf, "X%[-0-9]Y%[-0-9]", s1, s2) == 2) {
 			sscanf(s1, "%f", &v1);
