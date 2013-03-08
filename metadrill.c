@@ -23,7 +23,7 @@
 #define Z_VALUE_DOWN (cnc_z-7)
 
 #define FEEDRATE_HIGH 400
-#define FEEDRATE_LOW 90
+#define FEEDRATE_LOW 30
 
 #ifdef WIN32
 #  define TTS_FOR_GCODE "COM3"
